@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ci-cd-app
-  labels:
-    app: ci-cd-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ci-cd-app
@@ -16,27 +14,20 @@ spec:
     spec:
       containers:
         - name: ci-cd-app
-<<<<<<< HEAD
-          image: ammulu28/ci-cd-app:abc123
+          image: ammulu28/ci-cd-app:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
-=======
-          image: ammulu28/ci-cd-app:abc123
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 3000
->>>>>>> 53e53b4 (Fix Docker Hub login issue)
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ci-cd-service
+  name: ci-cd-app-service
 spec:
   selector:
     app: ci-cd-app
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000
-  type: NodePort
+      targetPort: 8080
+  type: ClusterIP
