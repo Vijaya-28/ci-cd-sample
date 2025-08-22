@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: ci-cd-app
-          image: ammulu28/ci-cd-app:abc123
+          image: ammulu28/ci-cd-app:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
