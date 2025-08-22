@@ -16,10 +16,17 @@ spec:
     spec:
       containers:
         - name: ci-cd-app
-          image: ammulu28/ci-cd-app:latest
+<<<<<<< HEAD
+          image: ammulu28/ci-cd-app:abc123
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+=======
+          image: ammulu28/ci-cd-app:abc123
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+>>>>>>> 53e53b4 (Fix Docker Hub login issue)
 ---
 apiVersion: v1
 kind: Service
