@@ -1,0 +1,19 @@
+{
+  "name": "ci-cd-app",
+  "version": "1.0.0",
+  "description": "Sample Node.js app for CI/CD with GitHub Actions, Docker, and Minikube/local VM.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
