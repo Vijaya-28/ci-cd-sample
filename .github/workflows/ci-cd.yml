@@ -33,12 +33,20 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ammulu28/ci-cd-app:latest
+          cache-from: type=registry,ref=ammulu28/ci-cd-app:cache
+          cache-to: type=registry,ref=ammulu28/ci-cd-app:cache,mode=max
 
       # Set up kubectl for Minikube
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
         with:
-          version: v1.27.0
+          version: v1.29.0
+     # Deploy to Kubernetes (Minikube or Cluster)
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl config use-context minikube
+          kubectl set image deployment/ci-cd-app ci-cd-app=ammulu28/ci-cd-app:latest
+          kubectl rollout status deployment/ci-cd-app
 
       # Configure Minikube Kubeconfig
       - name: Configure Kubeconfig
